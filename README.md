@@ -41,3 +41,8 @@
   삭제 후
  
   <img width="273" alt="스크린샷 2021-06-23 오후 11 27 00" src="https://user-images.githubusercontent.com/47955992/123114764-835de700-d47a-11eb-9d6c-54c0aac02666.png">
+
+  4-5. Exit 
+  
+  <img width="141" alt="스크린샷 2021-06-23 오후 11 39 23" src="https://user-images.githubusercontent.com/47955992/123116874-3ed34b00-d47c-11eb-8261-3bc733cf90ff.png">
+  
