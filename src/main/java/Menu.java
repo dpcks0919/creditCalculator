@@ -60,7 +60,12 @@ public class Menu {
             System.out.println("데이터가 존재하지 않습니다.");
             return;
         }
-
+        for (Person p: this.list) {
+            System.out.println(p.getNum() + "번째 학생 이름:" + p.getName());
+            System.out.println(" c언어 성적: " + p.getcCredit());
+            System.out.println(" 파이썬 성적: " + p.getPythonCredit());
+            System.out.println(" r언어 성적: " + p.getrCredit());
+        }
         System.out.println("삭제할 번호 입력");
         br = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -85,7 +90,13 @@ public class Menu {
         }
 
         try {
-            System.out.println("선택할 번호 입력");
+            for (Person p: this.list) {
+                System.out.println(p.getNum() + "번째 학생 이름:" + p.getName());
+                System.out.println(" c언어 성적: " + p.getcCredit());
+                System.out.println(" 파이썬 성적: " + p.getPythonCredit());
+                System.out.println(" r언어 성적: " + p.getrCredit());
+            }
+            System.out.println("수정할 번호 입력");
             br = new BufferedReader(new InputStreamReader(System.in));
             int num = Integer.parseInt(br.readLine());
             if(valid(num)) {
@@ -145,12 +156,11 @@ public class Menu {
             return;
         }
 
-        System.out.println("조회된 학생의 수는 " + this.list.size() + "명 입니다");
+        System.out.println("학생의 수는 " + this.list.size() + "명 입니다");
         for (Person p:
                 this.list) {
             System.out.println(p.toString());
         }
-        System.out.println("조회 끝");
     }
 
     private boolean valid(int num) {
