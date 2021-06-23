@@ -8,10 +8,12 @@
 1. create를 통해 만들 데이터 class 생성(멤버변수, constructor, getters & setters, toString 등)
 
 1. 메뉴 class 생성
-
 메뉴 출력 후 키보드로 사용자에게 입력 받기
+
 <img width="164" alt="스크린샷 2021-06-23 오후 11 05 37" src="https://user-images.githubusercontent.com/47955992/123110960-86a3a380-d477-11eb-883b-6531604fc12d.png">
+
 메뉴에 없는 문자, 숫자 입력 시
+
 <img width="222" alt="스크린샷 2021-06-23 오후 11 31 01" src="https://user-images.githubusercontent.com/47955992/123115441-13039580-d47b-11eb-9b66-e0da7fd2eaed.png">
 
 
