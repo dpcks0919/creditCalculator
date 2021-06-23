@@ -2,7 +2,7 @@
 
 
 ## 개발 Step
-1. 새 프로젝트 생성 (Gradle, Java)
+1. 새 프로젝트 생성 (File > New > Project.. > Gradle >  Java)
 1. 프로젝트 내 src/main/java에 main함수가 있는 Main 클래스 생성
 
 1. create를 통해 만들 데이터 class 생성(멤버변수, constructor, getters & setters, toString 등)
