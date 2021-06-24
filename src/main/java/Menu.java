@@ -150,6 +150,7 @@ public class Menu {
                 this.list.remove(num);
                 for(int i=0; i < list.size(); i++)
                     this.list.get(i).setNum(i);
+                System.out.println("삭제되었습니다.");
             }else {
                 deleteData();
             }
@@ -186,6 +187,7 @@ public class Menu {
                 System.out.println("수학 성적 입력");
                 this.list.get(num).setMathScore(Integer.parseInt(br.readLine()));
                 this.list.get(num).setGrade(calculateGrade(this.list.get(num).getKorScore(), this.list.get(num).getEngScore(), this.list.get(num).getMathScore()));
+                System.out.println("수정되었습니다.");
             } else {
                 updateData();
             }
@@ -217,6 +219,7 @@ public class Menu {
         p.setRegDate(regDate);
 
         this.list.add(p);
+        System.out.println("추가되었습니다.");
     }
 
     private void readData() {
