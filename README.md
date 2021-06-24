@@ -11,11 +11,11 @@
 
   - 메뉴 출력 후 키보드로 사용자에게 입력 받기
 
-  <img width="164" alt="스크린샷 2021-06-23 오후 11 05 37" src="https://user-images.githubusercontent.com/47955992/123110960-86a3a380-d477-11eb-883b-6531604fc12d.png">
+  <img width="205" alt="스크린샷 2021-06-24 오후 9 58 00" src="https://user-images.githubusercontent.com/47955992/123266716-3ee45100-d537-11eb-9716-e44511726da0.png">
 
   - 메뉴에 없는 문자, 숫자 입력 시
 
-  <img width="222" alt="스크린샷 2021-06-23 오후 11 31 01" src="https://user-images.githubusercontent.com/47955992/123115441-13039580-d47b-11eb-9b66-e0da7fd2eaed.png">
+  <img width="173" alt="스크린샷 2021-06-24 오후 9 58 35" src="https://user-images.githubusercontent.com/47955992/123266840-54597b00-d537-11eb-80e5-29159cb7a9ff.png">
 
 
   4-1. CREATE 기능 생성
