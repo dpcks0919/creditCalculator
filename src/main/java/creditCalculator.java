@@ -12,7 +12,7 @@ public class creditCalculator {
         boolean check = true;
 
         // Using Scanner
-//        Scanner scan = new Scanner(System.in);
+//        Scanner sescan = new Scanner(System.in);
 //
 //        while (check) {
 //            m.printMenu();

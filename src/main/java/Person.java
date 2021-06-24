@@ -4,22 +4,33 @@ import java.time.format.DateTimeFormatter;
 public class Person {
     private int num;
     private String name;
-    private String cCredit;
-    private String pythonCredit;
-    private String rCredit;
+    private int korScore;
+    private int engScore;
+    private int mathScore;
+    private String grade;
     private String regDate;
 
     public Person() {
 
     }
 
-    public Person(int num, String name, String cCredit, String pythonCredit, String rCredit, String regDate) {
+    public Person(int num, String name, int korScore, int engScore, int mathScore, String grade, String regDate) {
         this.num = num;
         this.name = name;
-        this.cCredit = cCredit;
-        this.pythonCredit = pythonCredit;
-        this.rCredit = rCredit;
+        this.korScore = korScore;
+        this.engScore = engScore;
+        this.mathScore = mathScore;
+        this.grade = grade;
         this.regDate = regDate;
+    }
+
+    private int sum(){
+        return this.korScore + this.engScore + this.mathScore;
+    }
+
+    @Override
+    public String toString() {
+        return this.num + ". " + this.name + " " +  this.korScore + "  " + this.engScore + "  " + this.mathScore + "   " + sum() + "  " + sum()/3 + "   "  + this.grade + "     "  +this.regDate ;
     }
 
     public int getNum() {
@@ -38,28 +49,28 @@ public class Person {
         this.name = name;
     }
 
-    public String getcCredit() {
-        return cCredit;
+    public int getKorScore() {
+        return korScore;
     }
 
-    public void setcCredit(String cCredit) {
-        this.cCredit = cCredit;
+    public void setKorScore(int korScore) {
+        this.korScore = korScore;
     }
 
-    public String getPythonCredit() {
-        return pythonCredit;
+    public int getEngScore() {
+        return engScore;
     }
 
-    public void setPythonCredit(String pythonCredit) {
-        this.pythonCredit = pythonCredit;
+    public void setEngScore(int engScore) {
+        this.engScore = engScore;
     }
 
-    public String getrCredit() {
-        return rCredit;
+    public int getMathScore() {
+        return mathScore;
     }
 
-    public void setrCredit(String rCredit) {
-        this.rCredit = rCredit;
+    public void setMathScore(int mathScore) {
+        this.mathScore = mathScore;
     }
 
     public String getRegDate() {
@@ -70,41 +81,11 @@ public class Person {
         this.regDate = regDate;
     }
 
-    public double calculate(){
-        double cCredit = translate(this.cCredit);
-        double pythonCredit = translate(this.pythonCredit);
-        double rCredit = translate(this.rCredit);
-
-        double average = (cCredit + pythonCredit + rCredit) / 3;
-
-        return Math.round(average*100)/100.0;
+    public String getGrade() {
+        return grade;
     }
 
-    public double translate(String credit){
-        if(credit.equals("A+")){
-            return 4.5;
-        }else if(credit.equals("A") || credit.equals("A0")){
-            return 4;
-        }else if(credit.equals("B+")){
-            return 3.5;
-        }else if(credit.equals("B") || credit.equals("B0")){
-            return 3;
-        }else if(credit.equals("C+")){
-            return 2.5;
-        }else if(credit.equals("C") || credit.equals("C0")){
-            return 2;
-        }else if(credit.equals("D+")){
-            return 1.5;
-        }else if(credit.equals("D") || credit.equals("D0")){
-            return 1;
-        }else {
-            return 0;
-        }
-    }
-
-    @Override
-    public String toString() {
-        return this.num + ". " + this.name + "의 평균학점은 " + calculate() + " 입니다. \n"
-                + "등록일자: " +  this.regDate ;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 }

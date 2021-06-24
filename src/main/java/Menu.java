@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +16,13 @@ public class Menu {
 
     public void printMenu() {
         System.out.println("---menu---");
-        System.out.println("1. Read");
-        System.out.println("2. Create");
-        System.out.println("3. Update");
-        System.out.println("4. Delete");
-        System.out.println("5. Exit");
+        System.out.println("1. 조회");
+        System.out.println("2. 추가");
+        System.out.println("3. 수정");
+        System.out.println("4. 삭제");
+        System.out.println("5. 이름 검색");
+        System.out.println("6. 학점 검색");
+        System.out.println("0. 종료");
         System.out.println("----------");
     }
 
@@ -45,6 +46,14 @@ public class Menu {
                 break;
 
             case "5":
+                searchByName();
+                break;
+
+            case "6":
+                searchByGrade();
+                break;
+
+            case "0":
                 System.out.println("종료");
                 return false;
 
@@ -52,6 +61,72 @@ public class Menu {
                 System.out.println("잘못된 메뉴 선택");
         }
         return true;
+    }
+
+    private void searchByGrade(){
+
+        if( this.list.size() == 0 ){
+            System.out.println("데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        System.out.println("검색할 학점 입력");
+        br = new BufferedReader(new InputStreamReader(System.in));
+
+        try{
+            String grade = br.readLine();
+            boolean check = false;
+            for( Person p : list ){
+                if( p.getGrade().equals(grade) ){
+                    if(!check){
+                        System.out.println("No Name Kor Eng Math Sum Avg Grade RegDate");
+                        System.out.println("==========================================");
+                        check = true;
+                    }
+                    System.out.println(p.toString());
+                }
+            }
+
+            if(!check )
+                System.out.println("검색 결과가 없습니다.");
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void searchByName(){
+
+
+        if( this.list.size() == 0 ){
+            System.out.println("데이터가 존재하지 않습니다.");
+            return;
+        }
+
+        System.out.println("검색할 이름 입력");
+        br = new BufferedReader(new InputStreamReader(System.in));
+
+        try{
+            String name = br.readLine();
+            boolean check = false;
+
+            for( Person p : list ){
+                if( p.getName().equals(name) ){
+                    if(! check  ){
+                        System.out.println("No Name Kor Eng Math Sum Avg Grade RegDate");
+                        System.out.println("==========================================");
+                        check = true;
+                    }
+                    System.out.println(p.toString());
+                }
+            }
+
+            if(!check )
+                System.out.println("검색 결과가 없습니다.");
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void deleteData() {
@@ -62,10 +137,11 @@ public class Menu {
         }
         for (Person p: this.list) {
             System.out.println(p.getNum() + "번째 학생 이름:" + p.getName());
-            System.out.println(" c언어 성적: " + p.getcCredit());
-            System.out.println(" 파이썬 성적: " + p.getPythonCredit());
-            System.out.println(" r언어 성적: " + p.getrCredit());
+            System.out.println(" 국어 성적: " + p.getKorScore());
+            System.out.println(" 영어 성적: " + p.getEngScore());
+            System.out.println(" 수학 성적: " + p.getMathScore());
         }
+
         System.out.println("삭제할 번호 입력");
         br = new BufferedReader(new InputStreamReader(System.in));
         try {
@@ -73,7 +149,7 @@ public class Menu {
             if(valid(num)) {
                 this.list.remove(num);
                 for(int i=0; i < list.size(); i++)
-                    this.list.get(num).setNum(i);
+                    this.list.get(i).setNum(i);
             }else {
                 deleteData();
             }
@@ -92,26 +168,24 @@ public class Menu {
         try {
             for (Person p: this.list) {
                 System.out.println(p.getNum() + "번째 학생 이름:" + p.getName());
-                System.out.println(" c언어 성적: " + p.getcCredit());
-                System.out.println(" 파이썬 성적: " + p.getPythonCredit());
-                System.out.println(" r언어 성적: " + p.getrCredit());
+                System.out.println(" 국어 성적: " + p.getKorScore());
+                System.out.println(" 영어 성적: " + p.getEngScore());
+                System.out.println(" 수학 성적: " + p.getMathScore());
             }
+
             System.out.println("수정할 번호 입력");
             br = new BufferedReader(new InputStreamReader(System.in));
             int num = Integer.parseInt(br.readLine());
             if(valid(num)) {
                 System.out.println("이름 입력");
-                br = new BufferedReader(new InputStreamReader(System.in));
                 this.list.get(num).setName(br.readLine());
-                System.out.println("C언어 성적 입력");
-                br = new BufferedReader(new InputStreamReader(System.in));
-                this.list.get(num).setrCredit(br.readLine());
-                System.out.println("파이썬 성적 입력");
-                br = new BufferedReader(new InputStreamReader(System.in));
-                this.list.get(num).setPythonCredit(br.readLine());
-                System.out.println("R프로그래밍 성적 입력");
-                br = new BufferedReader(new InputStreamReader(System.in));
-                this.list.get(num).setrCredit(br.readLine());
+                System.out.println("국어 성적 입력");
+                this.list.get(num).setKorScore(Integer.parseInt(br.readLine()));
+                System.out.println("영어 성적 입력");
+                this.list.get(num).setEngScore(Integer.parseInt(br.readLine()));
+                System.out.println("수학 성적 입력");
+                this.list.get(num).setMathScore(Integer.parseInt(br.readLine()));
+                this.list.get(num).setGrade(calculateGrade(this.list.get(num).getKorScore(), this.list.get(num).getEngScore(), this.list.get(num).getMathScore()));
             } else {
                 updateData();
             }
@@ -126,25 +200,21 @@ public class Menu {
             System.out.println("이름 입력");
             br = new BufferedReader(new InputStreamReader(System.in));
             p.setName(br.readLine());
-            System.out.println("학점은 대문자로 입력");
-            System.out.println("C언어 학점 입력");
-            br = new BufferedReader(new InputStreamReader(System.in));
-            p.setcCredit(br.readLine());
-            System.out.println("파이썬 학점 입력");
-            br = new BufferedReader(new InputStreamReader(System.in));
-            p.setPythonCredit(br.readLine());
-            System.out.println("R프로그래밍 학점 입력");
-            br = new BufferedReader(new InputStreamReader(System.in));
-            p.setrCredit(br.readLine());
+            System.out.println("국어 성적 입력");
+            p.setKorScore(Integer.parseInt(br.readLine()));
+            System.out.println("영어 성적 입력");
+            p.setEngScore(Integer.parseInt(br.readLine()));
+            System.out.println("수학 성적 입력");
+            p.setMathScore(Integer.parseInt(br.readLine()));
         } catch (IOException e) {
             e.printStackTrace();
         }
         p.setNum(this.list.size());
-
+        p.setGrade(calculateGrade(p.getKorScore(), p.getEngScore(), p.getMathScore()));
         LocalDate date = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String regDate = date.format(formatter);
-        p.setRegDate( regDate );
+        p.setRegDate(regDate);
 
         this.list.add(p);
     }
@@ -156,9 +226,9 @@ public class Menu {
             return;
         }
 
-        System.out.println("학생의 수는 " + this.list.size() + "명 입니다");
-        for (Person p:
-                this.list) {
+        System.out.println("No Name Kor Eng Math Sum Avg Grade RegDate");
+        System.out.println("==========================================");
+        for (Person p: this.list) {
             System.out.println(p.toString());
         }
     }
@@ -171,5 +241,30 @@ public class Menu {
         }
 
         return true;
+    }
+
+    private String calculateGrade(int korScore, int engScore, int mathScore){
+        int sum = korScore + engScore + mathScore;
+        double avg = sum / 3;
+
+        if(avg >= 95){
+            return "A+";
+        }else if( avg >= 90 ){
+            return "A";
+        }else if( avg >= 85 ){
+            return "B+";
+        }else if( avg >= 80 ){
+            return "B";
+        }else if( avg >= 75 ){
+            return "C+";
+        }else if( avg >= 70 ){
+            return "C";
+        }else if( avg >= 65 ){
+            return "D+";
+        }else if( avg >= 60 ){
+            return "D";
+        }else{
+            return "F";
+        }
     }
 }
