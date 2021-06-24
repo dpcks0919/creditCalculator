@@ -1,6 +1,3 @@
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 public class Person {
     private int num;
     private String name;
