@@ -187,6 +187,10 @@ public class Menu {
                 System.out.println("수학 성적 입력");
                 this.list.get(num).setMathScore(Integer.parseInt(br.readLine()));
                 this.list.get(num).setGrade(calculateGrade(this.list.get(num).getKorScore(), this.list.get(num).getEngScore(), this.list.get(num).getMathScore()));
+                LocalDate date = LocalDate.now();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                String regDate = date.format(formatter);
+                this.list.get(num).setRegDate(regDate);
                 System.out.println("수정되었습니다.");
             } else {
                 updateData();
