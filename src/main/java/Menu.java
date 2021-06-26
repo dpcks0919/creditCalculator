@@ -135,17 +135,12 @@ public class Menu {
             System.out.println("데이터가 존재하지 않습니다.");
             return;
         }
-        for (Person p: this.list) {
-            System.out.println(p.getNum() + "번째 학생 이름:" + p.getName());
-            System.out.println(" 국어 성적: " + p.getKorScore());
-            System.out.println(" 영어 성적: " + p.getEngScore());
-            System.out.println(" 수학 성적: " + p.getMathScore());
-        }
 
-        System.out.println("삭제할 번호 입력");
-        br = new BufferedReader(new InputStreamReader(System.in));
         try {
-            int num = Integer.parseInt(br.readLine());
+            readData();
+            System.out.println("삭제할 번호 입력");
+            br = new BufferedReader(new InputStreamReader(System.in));
+            int num = Integer.parseInt(br.readLine()) - 1;
             if(valid(num)) {
                 this.list.remove(num);
                 for(int i=0; i < list.size(); i++)
@@ -167,16 +162,10 @@ public class Menu {
         }
 
         try {
-            for (Person p: this.list) {
-                System.out.println(p.getNum() + "번째 학생 이름:" + p.getName());
-                System.out.println(" 국어 성적: " + p.getKorScore());
-                System.out.println(" 영어 성적: " + p.getEngScore());
-                System.out.println(" 수학 성적: " + p.getMathScore());
-            }
-
+            readData();
             System.out.println("수정할 번호 입력");
             br = new BufferedReader(new InputStreamReader(System.in));
-            int num = Integer.parseInt(br.readLine());
+            int num = Integer.parseInt(br.readLine()) - 1;
             if(valid(num)) {
                 System.out.println("이름 입력");
                 this.list.get(num).setName(br.readLine());
@@ -242,7 +231,7 @@ public class Menu {
 
     private boolean valid(int num) {
         // 배열 범위
-        if (this.list.size() <= num) {
+        if (this.list.size() <= num || num == -1) {
             System.out.println("없는 번호 입니다.");
             return false;
         }
